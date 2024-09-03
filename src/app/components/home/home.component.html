@@ -1,2 +1,23 @@
 
 <img src="./download.jpg" alt="iti"/>
+
+<!-- Binding -->
+
+  <h1> {{trackProperty.trackName}} </h1>
+
+  <p>{{trackProperty.trackBranch}}</p>
+  <ul>
+
+    <!-- <li>{{trackProperty.trackCourses[0]}} </li>
+    <li>{{trackProperty.trackCourses[1]}} </li>
+    <li>{{trackProperty.trackCourses[2]}} </li> -->
+  <!-- //*ngFor *ngIf   @for -->
+   <li *ngFor="let item of trackProperty.trackCourses " >
+    {{item}}
+    </li>
+  </ul>
+
+
+
+ 
+ 

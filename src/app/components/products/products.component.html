@@ -1,0 +1,152 @@
+<!-- {} -->
+
+<!-- 
+<div class="card" style="width: 18rem;">
+    <img src={{product.productImgUrl}} class="card-img-top" alt="...">
+    <img [src]="product.productImgUrl "class="card-img-top" alt="...">
+
+    <div class="card-body">
+      <h5 class="card-title">
+        {{product.productName}}
+      </h5>
+      <p class="card-text">{{product.productDetailes}}</p>
+      <p>price: {{product.productPrice}} </p>
+      <p>{{product.productQuantity}} </p>
+    <button class="btn btn-primary">
+        <i class="fa-solid fa-cart-shopping"></i>   Add to cart
+    </button>
+
+    </div>
+  </div>
+   -->
+
+<!-- @for (i of arrName ; track  ) {
+    html
+} -->
+
+<div class="container">
+  <div class="row my-4">
+    <button class="btn btn-primary" (click)="showImgToggle()">toggle</button>
+
+    @for(item of product ; track product) {
+        
+    <div class="col-3 mt-5">
+      <div class="card" style="width: 18rem">
+        <!-- <img src="{{ item.productImgUrl }}" class="card-img-top" alt="..."
+        *ngIf="showImg"
+        /> -->
+        @if(showImg){
+        <img src="{{ item.productImgUrl }}" class="card-img-top" alt="..." />
+        }
+
+        <!-- <img [src]="item.productImgUrl "class="card-img-top" alt="..."> -->
+
+        <div class="card-body">
+          <h5 class="card-title">
+            {{ item.productName }}
+          </h5>
+          <!-- <p class="card-text">{{ item.productDetails }}</p> -->
+          <p>price: {{ item.productPrice }}</p>
+          <p>{{ item.productQuantity }}</p>
+
+          @switch (item.productQuantity) { @case (0) {
+
+          <p class="text-danger">out of stock</p>
+          } @case (1) {
+          <p>last item</p>
+
+          } @default {
+          <p>in stock</p>
+          } 
+        }
+
+        <!-- //REF key -->
+
+  <!-- <ng-container *ngIf="item.productQuantity==0 ;else REF" > out of stock </ng-container>
+  <ng-template  #REF> in stock </ng-template> -->
+
+
+
+          <button class="btn btn-danger" [disabled]="item.productQuantity == 0">
+            <!-- <button class="btn btn-danger" [disabled]="item.productQuantity==0" 
+          [hidden]="item.productQuantity==0"   
+          > -->
+            <!-- <button class="btn btn-danger" 
+        *ngIf="item.productQuantity >0"   
+          > -->
+
+            <i class="fa-solid fa-cart-shopping"></i> Add to cart
+          </button>
+
+          <!-- <p>hello</p> -->
+        </div>
+      </div>
+    </div>
+
+    }
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- //*ngFor -->
+
+<!-- <div class="container">
+    <div class="row my-4">
+     <ng-container   *ngFor="let item of product" >
+   <div class="col-3 mt-5" *ngIf="item.productQuantity>0"  >
+        <div class="card" style="width: 18rem">
+          <img src="{{ item.productImgUrl }}" class="card-img-top" alt="..." />
+  
+          <div class="card-body">
+            <h5 class="card-title">
+              {{ item.productName }}
+            </h5>
+            <p>price: {{ item.productPrice }}</p>
+            <p>{{ item.productQuantity }}</p>
+            <button class="btn btn-primary">
+              <i class="fa-solid fa-cart-shopping"></i> Add to cart
+            </button>
+          </div>
+        </div>
+      </div>       
+    </ng-container >
+    
+    </div>
+  </div>
+   -->
