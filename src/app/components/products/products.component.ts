@@ -1,19 +1,26 @@
 import { Component } from '@angular/core';
 import { Istore } from '../../models/istore';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ImgstyleDirective } from '../../directives/imgstyle.directive';
+import { Data } from '@angular/router';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule,NgFor,NgIf],
+  imports: [CommonModule,NgFor,NgIf,FormsModule,ImgstyleDirective],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
 })
 export class ProductsComponent {
   // product:Istore //as {}
-  product: Istore[]; //as {}
+  product: Istore[]; //as [{},{}]
 
   showImg:boolean=true  
+
+ prddata:string="product";
+
+ date1:string='4 9 sep'
 
   constructor() {
     // this.product={

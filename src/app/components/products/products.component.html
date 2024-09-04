@@ -26,27 +26,39 @@
 
 <div class="container">
   <div class="row my-4">
+    <p>{{date1 | date:'short'}}</p>
     <button class="btn btn-primary" (click)="showImgToggle()">toggle</button>
+    <input type="text" [(ngModel)]="prddata" class="form-control mt-5"/>
 
     @for(item of product ; track product) {
-        
+
     <div class="col-3 mt-5">
       <div class="card" style="width: 18rem">
         <!-- <img src="{{ item.productImgUrl }}" class="card-img-top" alt="..."
         *ngIf="showImg"
         /> -->
         @if(showImg){
-        <img src="{{ item.productImgUrl }}" class="card-img-top" alt="..." />
+        <img src="{{ item.productImgUrl }}" class="card-img-top" alt="..."   appImgstyle/>
         }
 
         <!-- <img [src]="item.productImgUrl "class="card-img-top" alt="..."> -->
 
         <div class="card-body">
-          <h5 class="card-title">
-            {{ item.productName }}
-          </h5>
-          <!-- <p class="card-text">{{ item.productDetails }}</p> -->
-          <p>price: {{ item.productPrice }}</p>
+
+         <!-- //[class.className]  or [class.classBootsrap] -->
+          <!-- <h5 class="card-title " [class.text-danger]="item.productQuantity==0"
+          [class.test]="item.productQuantity>0"   > {{ item.productName }}</h5> -->
+
+          <!-- ngClass -->
+          <!-- <h5 class="card-title "  [ngClass]="{'text-danger':item.productQuantity==0,'test':item.productQuantity>0}"    > {{ item.productName }}</h5> -->
+
+          <!-- [style.property]= -->
+          <!-- <h5 class="card-title" [style.color]="(item.productQuantity==0)? 'red':'teal' "
+             [style.border]="(item.productQuantity==0)? '1px solid red':'1px solid yellow' "  > {{ item.productName }}</h5> -->
+          <!-- ngStyle -->
+          <h5 class="card-title"  [ngStyle]="{'color':(item.productQuantity==0)?'red':'yellow','border':(item.productQuantity>0)?'1px solid red':'1px solid yellow' }" > {{ item.productName |lowercase  }}</h5>
+         
+          <p >price: {{ item.productPrice | currency:'SAR' }}</p>
           <p>{{ item.productQuantity }}</p>
 
           @switch (item.productQuantity) { @case (0) {
@@ -57,15 +69,12 @@
 
           } @default {
           <p>in stock</p>
-          } 
-        }
+          } }
 
-        <!-- //REF key -->
+          <!-- //REF===> key -->
 
-  <!-- <ng-container *ngIf="item.productQuantity==0 ;else REF" > out of stock </ng-container>
+          <!-- <ng-container *ngIf="item.productQuantity==0 ;else REF" > out of stock </ng-container>
   <ng-template  #REF> in stock </ng-template> -->
-
-
 
           <button class="btn btn-danger" [disabled]="item.productQuantity == 0">
             <!-- <button class="btn btn-danger" [disabled]="item.productQuantity==0" 
@@ -86,38 +95,6 @@
     }
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
