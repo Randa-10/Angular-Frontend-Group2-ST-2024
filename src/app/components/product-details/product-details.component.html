@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <img [src]="oneProductItem?.productImgUrl" alt="" class="w-100" />
+    </div>
+    <div class="col-8 mt-5">
+      <h1>{{ oneProductItem?.productName }}</h1>
+      <p>{{ oneProductItem?.productDetails }}</p>
+    </div>
+  </div>
+  <!-- <button class="btn-danger btn my-5" routerLink="/products"> -->
+  <button class="btn-danger btn my-5" (click)="goBack()">Back</button>
+</div>
